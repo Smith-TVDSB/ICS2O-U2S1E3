@@ -3,8 +3,8 @@ import student
 
 
 
-def test_lower():
-    input_values=['3']
+def test_BA():
+    input_values=['Bruce','Alfred']
     output=[]
 
     def mock_input(s=None):
@@ -20,10 +20,10 @@ def test_lower():
 
     student.main()
 
-    assert "false" in output[1].lower()
+    assert "false" in output[2].lower()
 
-def test_exact():
-    input_values=['18']
+def test_bA():
+    input_values=['bruce','Alfred']
     output=[]
 
     def mock_input(s=None):
@@ -39,10 +39,10 @@ def test_exact():
 
     student.main()
 
-    assert "true" in output[1].lower()
+    assert "false" in output[2].lower()
 
-def test_lower_17():
-    input_values=['17']
+def test_Ba():
+    input_values=['Bruce','alfred']
     output=[]
 
     def mock_input(s=None):
@@ -58,10 +58,10 @@ def test_lower_17():
 
     student.main()
 
-    assert "false" in output[1].lower()
+    assert "false" in output[2].lower()
 
-def test_higher():
-    input_values=['80']
+def test_AB():
+    input_values=['Alfred','Bruce']
     output=[]
 
     def mock_input(s=None):
@@ -77,12 +77,81 @@ def test_higher():
 
     student.main()
 
-    assert "true" in output[1].lower()
+    assert "true" in output[2].lower()
 
-#Standard test output ONLY (no input)
-#No need for the if __name__ condition in the main code, but might as well when done so students get used to it.
-"""def test_hello(capsys):
-    import hello
-    out,err = capsys.readouterr()
-    assert out == "Hello world!\n" or "bye" in out, "Should read 'Hello world!' "
-"""
+def test_aB():
+    input_values=['alfred','Bruce']
+    output=[]
+
+    def mock_input(s=None):
+        if s is not None:
+            output.append(s)
+            return input_values.pop(0)
+        else:
+            output.append("")
+            return input_values.pop(0)
+    
+    student.input = mock_input
+    student.print = lambda s : output.append(s)
+
+    student.main()
+
+    assert "true" in output[2].lower()
+
+def test_Ab():
+    input_values=['Alfred','bruce']
+    output=[]
+
+    def mock_input(s=None):
+        if s is not None:
+            output.append(s)
+            return input_values.pop(0)
+        else:
+            output.append("")
+            return input_values.pop(0)
+    
+    student.input = mock_input
+    student.print = lambda s : output.append(s)
+
+    student.main()
+
+    assert "true" in output[2].lower()
+
+
+def test_BB():
+    input_values=['Bruce','Bruce']
+    output=[]
+
+    def mock_input(s=None):
+        if s is not None:
+            output.append(s)
+            return input_values.pop(0)
+        else:
+            output.append("")
+            return input_values.pop(0)
+    
+    student.input = mock_input
+    student.print = lambda s : output.append(s)
+
+    student.main()
+
+    assert "true" in output[2].lower()
+
+def test_more():
+    input_values=['Brute','Bruce']
+    output=[]
+
+    def mock_input(s=None):
+        if s is not None:
+            output.append(s)
+            return input_values.pop(0)
+        else:
+            output.append("")
+            return input_values.pop(0)
+    
+    student.input = mock_input
+    student.print = lambda s : output.append(s)
+
+    student.main()
+
+    assert "false" in output[2].lower()
