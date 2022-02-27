@@ -55,7 +55,7 @@ def test_Ba(capsys):
     student.main()
 
     out, err = capsys.readouterr()
-    assert "true" in out[-8:].lower()
+    assert "false" in out[-8:].lower()
 
 def test_AB(capsys):
     input_values=['Alfred','Bruce']
@@ -146,4 +146,4 @@ def test_more(capsys):
     student.main()
 
     out, err = capsys.readouterr()
-    assert "true" in out[-8:].lower()
+    assert "false" in out[-8:].lower()
