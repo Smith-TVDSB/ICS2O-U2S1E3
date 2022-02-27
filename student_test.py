@@ -3,7 +3,7 @@ import student
 
 
 
-def test_BA():
+def test_BA(capsys):
     input_values=['Bruce','Alfred']
     output=[]
 
@@ -16,13 +16,12 @@ def test_BA():
             return input_values.pop(0)
     
     student.input = mock_input
-    student.print = lambda s : output.append(s)
-
     student.main()
 
-    assert "false" in output[2].lower()
+    out, err = capsys.readouterr()
+    assert "false" in out[-8:].lower()
 
-def test_bA():
+def test_bA(capsys):
     input_values=['bruce','Alfred']
     output=[]
 
@@ -35,13 +34,12 @@ def test_bA():
             return input_values.pop(0)
     
     student.input = mock_input
-    student.print = lambda s : output.append(s)
-
     student.main()
 
-    assert "false" in output[2].lower()
+    out, err = capsys.readouterr()
+    assert "false" in out[-8:].lower()
 
-def test_Ba():
+def test_Ba(capsys):
     input_values=['Bruce','alfred']
     output=[]
 
@@ -54,13 +52,12 @@ def test_Ba():
             return input_values.pop(0)
     
     student.input = mock_input
-    student.print = lambda s : output.append(s)
-
     student.main()
 
-    assert "false" in output[2].lower()
+    out, err = capsys.readouterr()
+    assert "true" in out[-8:].lower()
 
-def test_AB():
+def test_AB(capsys):
     input_values=['Alfred','Bruce']
     output=[]
 
@@ -73,13 +70,12 @@ def test_AB():
             return input_values.pop(0)
     
     student.input = mock_input
-    student.print = lambda s : output.append(s)
-
     student.main()
 
-    assert "true" in output[2].lower()
+    out, err = capsys.readouterr()
+    assert "true" in out[-8:].lower()
 
-def test_aB():
+def test_aB(capsys):
     input_values=['alfred','Bruce']
     output=[]
 
@@ -92,13 +88,12 @@ def test_aB():
             return input_values.pop(0)
     
     student.input = mock_input
-    student.print = lambda s : output.append(s)
-
     student.main()
 
-    assert "true" in output[2].lower()
+    out, err = capsys.readouterr()
+    assert "true" in out[-8:].lower()
 
-def test_Ab():
+def test_Ab(capsys):
     input_values=['Alfred','bruce']
     output=[]
 
@@ -111,14 +106,13 @@ def test_Ab():
             return input_values.pop(0)
     
     student.input = mock_input
-    student.print = lambda s : output.append(s)
-
     student.main()
 
-    assert "true" in output[2].lower()
+    out, err = capsys.readouterr()
+    assert "true" in out[-8:].lower()
 
 
-def test_BB():
+def test_BB(capsys):
     input_values=['Bruce','Bruce']
     output=[]
 
@@ -131,13 +125,12 @@ def test_BB():
             return input_values.pop(0)
     
     student.input = mock_input
-    student.print = lambda s : output.append(s)
-
     student.main()
 
-    assert "true" in output[2].lower()
+    out, err = capsys.readouterr()
+    assert "true" in out[-8:].lower()
 
-def test_more():
+def test_more(capsys):
     input_values=['Brute','Bruce']
     output=[]
 
@@ -150,8 +143,7 @@ def test_more():
             return input_values.pop(0)
     
     student.input = mock_input
-    student.print = lambda s : output.append(s)
-
     student.main()
 
-    assert "false" in output[2].lower()
+    out, err = capsys.readouterr()
+    assert "true" in out[-8:].lower()
